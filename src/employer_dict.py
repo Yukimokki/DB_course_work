@@ -1,0 +1,11 @@
+{
+    'Aston':6093775,
+    'VK':15478,
+    'T-bank':78638,
+    'Tensor':67611,
+    'Yandex_team':1740,
+    'Lanit':733,
+    'Askon':41144,
+    'LaModa_tech':9418714,
+    'CosmoMedia':10711119,
+}
