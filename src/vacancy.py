@@ -1,36 +1,32 @@
-class JobVacancy:
-    def __init__(self, name: str, salary: dict, url: str, requirement: str, area: str, currency: str):
-        if not isinstance(salary, dict):
-            raise TypeError("Salary must be a dictionary")
-        self.name = name
+class Vacancy:
+    """Класс для организации данных по вакансиям в удобном виде. хранит в себе полезные атрибуты по вакансиям"""
+
+    def __init__(self, vacancy_id: str | int, vacancy_name: str, vacancy_url: str, salary: int, currency: int,
+                 requirement: str, employer_id: str, employer_name: str):
+        """ Конструктор класса """
+
+        self.vacancy_id = vacancy_id
+        self.vacancy_name = vacancy_name
+        self.employer_id = employer_id
+        self.employer_name = employer_name
+        self.vacancy_url = vacancy_url
         self.salary = salary
-        self.url = url
-        self.requirement = requirement
-        self.area = area
         self.currency = currency
-
-    def __str__(self):
-        """
-        распечатывает вакансию в виде, удобном для чтения
-         """
-        return (
-            f"Название: {self.name}\n"
-            f"Зарплата: от {self.salary['from']} до {self.salary['to']} {self.salary['currency']}\n"
-            f"Валюта: {self.currency}\n"
-            f"Ссылка: {self.url}\n"
-            f"Требования: {self.requirement}\n"
-            f"Регион: {self.area}\n"
-                    )
-
-    def __repr__(self):
-        return f"Vacancy({self.name}, {self.salary}, {self.url}, {self.requirement}, {self.area})"
-
-    def __gt__(self, other):
-        """
-        Сравнивает зарплату
-:
-        """
-        return self.salary['to'] > other.salary['to']
+        self.requirement = requirement
 
     def __lt__(self, other):
-        return self.salary['to'] < other.salary['to']
+        """ Метод сравнения зарплат """
+        # if self.salary is not None and other.salary is not None:
+        return self.salary < other.salary
+
+    def __str__(self):
+        """ Строковое представление вакансии """
+
+        return (f'ID вакансии: {self.vacancy_id}\n'
+                f'ID компании: {self.employer_id}\n'
+                f'Наименование компании: {self.employer_name}\n'
+                f'Наименование вакансии: - {self.vacancy_name}\n'
+                f'Ссылка на вакансию {self.vacancy_url}\n'
+                f'Зарплата от - {self.salary},\n'
+                f'Валюта - {self.currency},\n'
+                f'Краткое описание: {self.requirement}\n')
